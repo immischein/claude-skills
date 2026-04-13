@@ -25,17 +25,38 @@ The skill activates on any of:
 
 ## Installation
 
-Copy the skill file into your Claude Code commands directory:
+### Option 1 — one-liner (recommended)
+
+Downloads the skill directly into your Claude Code commands directory:
 
 ```sh
-# User-wide (available in all projects)
-cp SKILL_final.md ~/.claude/commands/sci-plot.md
-
-# Project-local (only in this repo)
-cp SKILL_final.md .claude/commands/sci-plot.md
+curl -L https://raw.githubusercontent.com/immischein/sci-plot/master/skill.md \
+  -o ~/.claude/commands/sci-plot.md
 ```
 
-Then invoke it by typing `/sci-plot` in Claude Code, or just ask Claude to plot or fit something — the trigger words above will load it automatically.
+### Option 2 — clone and copy
+
+```sh
+git clone https://github.com/immischein/sci-plot.git
+cp sci-plot/skill.md ~/.claude/commands/sci-plot.md
+```
+
+### Option 3 — project-local only
+
+If you only want the skill available in one project:
+
+```sh
+mkdir -p .claude/commands
+curl -L https://raw.githubusercontent.com/immischein/sci-plot/master/skill.md \
+  -o .claude/commands/sci-plot.md
+```
+
+### Using it
+
+Once installed, open Claude Code in any project and either:
+
+- Type `/sci-plot` to invoke it explicitly
+- Or just ask Claude to plot or fit something — the trigger words above will load it automatically
 
 ## Before / after
 
