@@ -1,6 +1,6 @@
 # sci-plot
 
-A Claude Code skill for publication-quality scientific figures in Python/Jupyter with matplotlib.
+A Claude Code skill for publication-quality scientific figures and professional curve fits in Python/Jupyter with matplotlib.
 
 ## What it does
 
