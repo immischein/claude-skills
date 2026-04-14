@@ -1,10 +1,12 @@
-# sci-plot
+# claude_skills
 
-A Claude Code skill for publication-quality scientific figures and professional curve fits in Python/Jupyter with matplotlib.
+A collection of Claude Code skills for scientific Python development.
 
-## What it does
+## Skills
 
-Guides an end-to-end workflow for creating thesis- or paper-ready figures:
+### [sci-plot](skill.md) — publication-quality figures & professional curve fits
+
+Guides an end-to-end workflow for creating thesis- or paper-ready matplotlib figures:
 
 - Asks the right questions upfront before writing any code (axes, fit model, exponent convention, output format)
 - Detects the appropriate fit model from context (power law, exponential, Gaussian, linear, log, survival, sinusoid, Arrhenius)
@@ -15,78 +17,64 @@ Guides an end-to-end workflow for creating thesis- or paper-ready figures:
 - Propagates fit errors to derived quantities
 - Exports transparent PDF/PNG with correct `dpi`, `bbox_inches`, and `transparent` settings
 
-## Triggers
+**Triggers:** `plot`, `figure`, `fit`, `thesis`, `publication`, `log-log`, `savefig`, `transparent`, `slider`, `ipywidgets`, `power law`, `scaling`, `exponent`, `noisy`, `artifacts`, `colormap`, `legend`, `axis`, `matplotlib`
 
-The skill activates on any of:
+---
 
-`plot`, `figure`, `fit`, `thesis`, `publication`, `log-log`, `savefig`, `transparent`,
-`slider`, `ipywidgets`, `power law`, `scaling`, `exponent`, `noisy`, `artifacts`,
-`colormap`, `legend`, `axis`, `matplotlib`
+### [restructure](restructure.md) — split a module into compute script + analysis notebook
+
+Restructures any Python module into two clean parts:
+
+- A **compute script** — pure data generation, no plotting, saves to `data/` as `.npz`/`.pkl`, runnable from any working directory
+- An **analysis notebook** — loads from `data/`, interactive fit-range sliders, thesis-quality transparent PDF output
+
+**Triggers:** `/restructure <module-name>`
+
+---
 
 ## Installation
 
-### Option 1 — one-liner (recommended)
-
-Downloads the skill directly into your Claude Code commands directory:
+### Install a single skill
 
 ```sh
-curl -L https://raw.githubusercontent.com/immischein/sci-plot/master/skill.md \
+# sci-plot
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/skill.md \
   -o ~/.claude/commands/sci-plot.md
+
+# restructure
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/restructure.md \
+  -o ~/.claude/commands/restructure.md
 ```
 
-### Option 2 — clone and copy
+### Install all skills at once
 
 ```sh
-git clone https://github.com/immischein/sci-plot.git
-cp sci-plot/skill.md ~/.claude/commands/sci-plot.md
+for skill in sci-plot restructure; do
+  curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/${skill}.md \
+    -o ~/.claude/commands/${skill}.md
+done
 ```
 
-### Option 3 — project-local only
+> **Note:** `skill.md` is installed as `sci-plot.md` so the slash command becomes `/sci-plot`.
 
-If you only want the skill available in one project:
+### Project-local install (one project only)
 
 ```sh
 mkdir -p .claude/commands
-curl -L https://raw.githubusercontent.com/immischein/sci-plot/master/skill.md \
+
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/skill.md \
   -o .claude/commands/sci-plot.md
+
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/restructure.md \
+  -o .claude/commands/restructure.md
 ```
 
-### Using it
+### Using the skills
 
-Once installed, open Claude Code in any project and either:
+Once installed, open Claude Code and either:
 
-- Type `/sci-plot` to invoke it explicitly
-- Or just ask Claude to plot or fit something — the trigger words above will load it automatically
-
-## Before / after
-
-**Without the skill** — loose, back-and-forth session:
-
-```
-User:   "Add a power-law fit to my data."
-Claude: [writes code with hardcoded x range, picks an arbitrary exponent convention, no slider]
-User:   "The range is wrong."
-Claude: [changes range, still no interactive control, convention still unclear]
-...  (3–4 more rounds)
-```
-
-**With the skill** — structured from the start:
-
-```
-User:   "Add a power-law fit to my data."
-Claude: "Before I write the fit, a few quick questions:
-         1. What are x and y — what do they represent?
-         2. Fitting y = A·x^n: confirm the exponent of interest is n itself,
-            not a function of n (e.g. Q = 2/n)?
-         3. Any zeros or NaN in the data at early values?
-         4. Output: inline display or transparent PDF?"
-
-User:   [answers]
-
-Claude: [drops in universal interactive fitter with FloatRangeSlider,
-         states the exact convention above the code block,
-         uses colorblind-safe palette and serif rcParams]
-```
+- Type `/sci-plot` or `/restructure <module>` to invoke explicitly
+- Or just mention a trigger word — Claude will load the relevant skill automatically
 
 ## Requirements
 
@@ -96,4 +84,4 @@ Claude: [drops in universal interactive fitter with FloatRangeSlider,
 
 ## License
 
-MIT — see [LICENSE](LICENSE). If you adapt this skill publicly, a mention or link back is appreciated.
+MIT — see [LICENSE](LICENSE). If you adapt these skills publicly, a mention or link back is appreciated.
