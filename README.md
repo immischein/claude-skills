@@ -4,7 +4,7 @@ A collection of Claude Code skills for scientific Python development.
 
 ## Skills
 
-### [sci-plot](skill.md) — publication-quality figures & professional curve fits
+### [sci-plot](sci-plot.md) — publication-quality figures & professional curve fits
 
 Guides an end-to-end workflow for creating thesis- or paper-ready matplotlib figures:
 
@@ -38,7 +38,7 @@ Restructures any Python module into two clean parts:
 
 ```sh
 # sci-plot
-curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/skill.md \
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/sci-plot.md \
   -o ~/.claude/commands/sci-plot.md
 
 # restructure
@@ -55,14 +55,14 @@ for skill in sci-plot restructure; do
 done
 ```
 
-> **Note:** `skill.md` is installed as `sci-plot.md` so the slash command becomes `/sci-plot`.
+> **Note:** `sci-plot.md` is installed as `sci-plot.md` so the slash command becomes `/sci-plot`.
 
 ### Project-local install (one project only)
 
 ```sh
 mkdir -p .claude/commands
 
-curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/skill.md \
+curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/sci-plot.md \
   -o .claude/commands/sci-plot.md
 
 curl -L https://raw.githubusercontent.com/immischein/claude_skills/master/restructure.md \
