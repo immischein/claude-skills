@@ -84,4 +84,4 @@ Once installed, open Claude Code and either:
 
 ## License
 
-MIT — see [LICENSE](LICENSE). If you adapt these skills publicly, a mention or link back is appreciated.
+GPL — see [LICENSE](LICENSE). If you adapt these skills publicly, a mention or link back is appreciated.
